@@ -120,6 +120,16 @@ app["delete"]("/deleteMessage", function (req, res) {
   });
   res.send("".concat(deleteId, " deleted."));
 });
+/* GET /allMessages
+    summary: Returns current state of the queue
+    parameters: None
+    responses:
+      200: [{id: string, messageBody: string, processingPending: string}]
+*/
+
+app.get("/allMessages", function (req, res) {
+  res.json(queue);
+});
 app.listen(PORT, function () {
-  return console.log("Example app listening on port ".concat(PORT, "!"));
+  return console.log("Queue server listening on port ".concat(PORT, "!"));
 });

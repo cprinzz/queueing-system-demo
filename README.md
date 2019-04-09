@@ -46,6 +46,19 @@ This application is a simplified message queue with sendMessage, receiveMessages
       200: string
       400: string
 
+**GET /allMessages**
+
+    summary: Returns current state of the queue
+    parameters: None
+    responses:
+      200: [
+        {
+          id: string,
+          messageBody: string,
+          processingPending: string
+        }
+      ]
+
 ### Scaling
 
 As the number of messages published increases, we can distribute the queue across multiple servers.

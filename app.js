@@ -111,4 +111,15 @@ app.delete("/deleteMessage", (req, res) => {
   res.send(`${deleteId} deleted.`);
 });
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+/* GET /allMessages
+    summary: Returns current state of the queue
+    parameters: None
+    responses:
+      200: [{id: string, messageBody: string, processingPending: string}]
+*/
+
+app.get("/allMessages", (req, res) => {
+  res.json(queue);
+});
+
+app.listen(PORT, () => console.log(`Queue server listening on port ${PORT}!`));
