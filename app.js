@@ -1,12 +1,13 @@
-const uuidv1 = require("uuid/v1");
-const util = require("util");
+import uuidv1 from "uuid/v1";
+import util from "util";
+import express from "express";
+import bodyParser from "body-parser";
 const setTimeoutPromise = util.promisify(setTimeout);
-const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
-const port = 3000;
-const visibilityTimeout = 2000;
+
+const PORT = 3000;
+const VISIBILITY_TIMEOUT = 2000;
 
 let queue = [];
 
@@ -56,22 +57,26 @@ app.get("/receiveMessages", (req, res) => {
     message => !message.pendingProcessing
   );
   if (unprocessedMessages.length > 0) {
+    // Send unprocessed messages
     const messages = unprocessedMessages.map(message => ({
       id: message.id,
       messageBody: message.messageBody
     }));
+    res.json(messages);
+
+    // Change messages state to processing
     queue = unprocessedMessages.map(message => ({
       id: message.id,
       messageBody: message.messageBody,
       pendingProcessing: true
     }));
-    res.json(messages);
-    console.log(queue);
 
-    setTimeoutPromise(visibilityTimeout, unprocessedMessages).then(
+    // Start visibility timeout
+    setTimeoutPromise(VISIBILITY_TIMEOUT, unprocessedMessages).then(
       unprocessedMessages => {
         if (queue.length > 0) {
           const updatedQueue = [];
+          // Set update queue with messages set to unprocessed status
           unprocessedMessages.forEach(unprocessedMessage => {
             if (queue.find(message => message.id === unprocessedMessage.id)) {
               updatedQueue.push(unprocessedMessage);
@@ -106,4 +111,4 @@ app.delete("/deleteMessage", (req, res) => {
   res.send(`${deleteId} deleted.`);
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));

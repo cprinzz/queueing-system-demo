@@ -7,8 +7,15 @@
   "author": "Chris Prinz <cprinzz@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "build": "babel app.js -d build",
+    "start-server": "yarn build && node build/app.js"
   }
 }
