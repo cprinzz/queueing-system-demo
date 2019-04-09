@@ -1,0 +1,14 @@
+{
+  "name": "queueing-system-demo",
+  "version": "1.0.0",
+  "description": "A simple queueing system",
+  "main": "app.js",
+  "repository": "https://github.com/cprinzz/queueing-system-demo.git",
+  "author": "Chris Prinz <cprinzz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  }
+}
