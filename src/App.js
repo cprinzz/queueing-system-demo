@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import Queue from './Components/Queue';
-import Client from './Components/Client';
+import React, { Component } from "react";
+import Queue from "./Components/Queue";
+import Client from "./Components/Client";
 import {
   getAllMessages,
   sendMessage,
   receiveMessages,
   deleteMessage
-} from './api';
-import './App.css';
-import { send } from 'q';
+} from "./api";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -36,7 +35,6 @@ class App extends Component {
   };
 
   handleReceiveMessages = clientId => {
-    console.log('TCL: App -> clientId', clientId);
     receiveMessages()
       .then(messages => {
         this.setState({ ...this.state, [clientId]: { messages } });
@@ -63,7 +61,7 @@ class App extends Component {
     return (
       <div className="App">
         <Queue messages={messages} />
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Client
             clientId="clientOne"
             clientName="Client 1"
