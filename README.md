@@ -1,64 +1,68 @@
-# queueing-system-demo
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Description
+## Available Scripts
 
-This application is a simplified message queue with sendMessage, receiveMessages, and deleteMessage actions. The "database" is an in memory array with message stored as objects with attributes `{id: string, messageBody: string, pendingProcessing: bool}`.
+In the project directory, you can run:
 
-### Setup
+### `npm start`
 
-1. Clone the repo
-   `git clone https://github.com/cprinzz/queueing-system-demo`
-2. Install dependencies
-   `cd queueing-system-demo && yarn`
-3. Start the app
-   `yarn start`
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### API Reference
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-**POST /sendMessage**
+### `npm test`
 
-    summary: Adds messages from producer to DB
-    parameters: { messageBody: string (Required) }
-    responses:
-      200: {id: string}
-      400: string
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-**GET /receiveMessages**
+### `npm run build`
 
-    summary: Pulls unprocessed messages from the DB, sends them to the consumer,
-              sets the messages to Processing status, and sets a timeout to reset
-              the processing status if the message has not been deleted.
-    parameters: None
-    responses:
-      200: {
-        messages: [{
-          id: string
-          messageBody: string
-        }]
-      }
-      400: string
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-**DELETE /deleteMessage**
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-    summary: Deletes message in DB with messageId
-    parameters: {id: string (Required) }
-    responses:
-      200: string
-      400: string
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-**GET /allMessages**
+### `npm run eject`
 
-    summary: Returns current state of the queue
-    parameters: None
-    responses:
-      200: [
-        {
-          id: string,
-          messageBody: string,
-          processingPending: string
-        }
-      ]
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-### Scaling
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-As the number of messages published increases, we can distribute the queue across multiple servers.
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
