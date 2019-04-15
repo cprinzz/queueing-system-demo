@@ -1,9 +1,9 @@
-import React from 'react';
-import { Card, Table } from 'react-bootstrap';
+import React from "react";
+import { Card, Table } from "react-bootstrap";
 
 export default function Queue({ messages }) {
   return (
-    <Card border="primary" style={{ width: '50vw', margin: '3em auto' }}>
+    <Card border="primary" style={{ width: "50vw", margin: "3em auto" }}>
       <Card.Header>
         <b>Queue State</b>
       </Card.Header>
@@ -18,10 +18,10 @@ export default function Queue({ messages }) {
           </thead>
           <tbody>
             {messages.map(message => (
-              <tr>
+              <tr key={message.id}>
                 <td>{message.id}</td>
                 <td>{message.messageBody}</td>
-                <td>{message.pendingProcessing ? 'True' : 'False'}</td>
+                <td>{message.pendingProcessing ? "True" : "False"}</td>
               </tr>
             ))}
           </tbody>

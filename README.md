@@ -23,7 +23,7 @@ This application is a simplified message queue with sendMessage, receiveMessages
 
 ### API Reference
 
-**POST /sendMessage**
+**POST /api/sendMessage**
 
     summary: Adds messages from producer to DB
     parameters: { messageBody: string (Required) }
@@ -33,7 +33,7 @@ This application is a simplified message queue with sendMessage, receiveMessages
     errors:
       400: 'Request body must include parameter: messageBody'
 
-**GET /receiveMessages**
+**GET /api/receiveMessages**
 
     summary: Pulls unprocessed messages from the DB, sends them to the consumer,
               sets the messages to Processing status, and sets a timeout to reset
@@ -47,7 +47,7 @@ This application is a simplified message queue with sendMessage, receiveMessages
         }]
       }
 
-**DELETE /deleteMessage**
+**DELETE /api/deleteMessage**
 
     summary: Deletes message in DB with messageId
     parameters: {id: string (Required) }
@@ -57,7 +57,7 @@ This application is a simplified message queue with sendMessage, receiveMessages
     errors:
       400: 'Request body must include parameter: id'
 
-**GET /allMessages**
+**GET /api/allMessages**
 
     summary: Returns current state of the queue
     parameters: None

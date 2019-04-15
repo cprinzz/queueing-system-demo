@@ -49,7 +49,7 @@ class App extends Component {
       this.setState({
         ...this.state,
         [clientId]: {
-          messages: messages.filter(message => message.id != messageId)
+          messages: messages.filter(message => message.id !== messageId)
         }
       });
       this.update();

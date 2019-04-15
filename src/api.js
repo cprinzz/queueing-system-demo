@@ -1,6 +1,6 @@
 export function sendMessage(messageBody = "") {
   // Default options are marked with *
-  return fetch("http://localhost:5000/sendMessage", {
+  return fetch("http://localhost:5000/api/sendMessage", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     credentials: "same-origin", // include, *same-origin, omit
     headers: {
@@ -12,7 +12,7 @@ export function sendMessage(messageBody = "") {
 
 export function deleteMessage(id = "") {
   // Default options are marked with *
-  return fetch("http://localhost:5000/deleteMessage", {
+  return fetch("http://localhost:5000/api/deleteMessage", {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     credentials: "same-origin", // include, *same-origin, omit
     headers: {
@@ -23,7 +23,7 @@ export function deleteMessage(id = "") {
 }
 
 export function getAllMessages() {
-  return fetch("http://localhost:5000/allMessages")
+  return fetch("http://localhost:5000/api/allMessages")
     .then(res => res.json())
     .catch(err => {
       console.log(err);
@@ -32,7 +32,7 @@ export function getAllMessages() {
 }
 
 export function receiveMessages() {
-  return fetch("http://localhost:5000/receiveMessages")
+  return fetch("http://localhost:5000/api/receiveMessages")
     .then(res => res.json())
     .catch(err => err.json());
 }

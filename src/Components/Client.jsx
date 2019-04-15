@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, Table, InputGroup, FormControl, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Card, Table, InputGroup, FormControl, Button } from "react-bootstrap";
 export default function Client({
   clientId,
   clientName,
@@ -8,9 +8,9 @@ export default function Client({
   onReceiveMessages,
   onProcess
 }) {
-  const [messageBodyValue, setMessageBodyValue] = useState('');
+  const [messageBodyValue, setMessageBodyValue] = useState("");
   return (
-    <Card border="success" style={{ width: '45vw' }}>
+    <Card border="success" style={{ width: "45vw" }}>
       <Card.Header>
         <b>{clientName}</b>
       </Card.Header>
@@ -27,7 +27,7 @@ export default function Client({
               variant="primary"
               onClick={() => {
                 onSendMessage(messageBodyValue);
-                setMessageBodyValue('');
+                setMessageBodyValue("");
               }}
             >
               Send
@@ -36,12 +36,12 @@ export default function Client({
         </InputGroup>
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            margin: '1em 0'
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "1em 0"
           }}
         >
-          <h5 style={{ margin: 'auto 0' }}>Messages</h5>
+          <h5 style={{ margin: "auto 0" }}>Messages</h5>
           <Button variant="info" onClick={() => onReceiveMessages(clientId)}>
             Request Messages
           </Button>
@@ -57,10 +57,10 @@ export default function Client({
           </thead>
           <tbody>
             {messages.map(message => (
-              <tr>
+              <tr key={message.id}>
                 <td>{message.id}</td>
                 <td>{message.messageBody}</td>
-                <td style={{ textAlign: 'center' }}>
+                <td style={{ textAlign: "center" }}>
                   <Button
                     variant="success"
                     onClick={() => onProcess(clientId, message.id)}
