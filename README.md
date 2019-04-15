@@ -2,7 +2,7 @@
 
 ### Description
 
-This application is a simplified message queue with sendMessage, receiveMessages, and deleteMessage actions. The "database" is an in memory array with message stored as objects with attributes `{id: string, messageBody: string, pendingProcessing: bool}`. The client app allows you to demo the functionality of the queue as well as see the state of the queue at all times (polled every .5 seconds). Some things to try are:
+This application is a simplified message queue with sendMessage, receiveMessages, and deleteMessage actions. The "database" is an in memory map in the form `id:string => {messageBody: string, pendingProcessing: bool}`. The client app allows you to demo the functionality of the queue as well as see the state of the queue at all times (polled every .5 seconds). Some things to try are:
 
 - Sending messages to the queue from either client
 - Requesting messages from either client and observing the "pendingProcessing" flag change to true
