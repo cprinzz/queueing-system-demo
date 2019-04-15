@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start-server": "yarn build-server && node server-build/server.js",
-    "build-server": "babel server.js -d server-build",
+    "build-server": "babel server/index.js -d server-build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
