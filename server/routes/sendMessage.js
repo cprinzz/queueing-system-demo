@@ -22,7 +22,6 @@ sendMessage.post("/", (req, res, next) => {
   }
   const message = {
     messageBody: messageBody,
-    pendingProcessing: false
   };
 
   const messageId = db.addMessage(message);
